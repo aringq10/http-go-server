@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"mi_projecto/internal/request"
+	"github.com/aringq10/http-go-server/internal/request"
 )
 
 const port = ":42069"
