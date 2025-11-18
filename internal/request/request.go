@@ -164,15 +164,15 @@ func (r *Request) parseSingle(data []byte) (n int, err error) {
         r.Body = append(r.Body, data...)
         if len(r.Body) > length {
             r.state = requestStateDone
-            return 0, errors.New("error: body larger than reported content length\n")
+            return 0, errors.New("error: body larger than reported content length")
         } else if len(r.Body) == length {
             r.state = requestStateDone
         }
         return len(data), nil
     case requestStateDone:
-        return 0, errors.New("error: trying to read data in a requestStateDone state\n")
+        return 0, errors.New("error: trying to read data in a requestStateDone state")
     default:
-        return 0, errors.New("error: unknown parser state\n")
+        return 0, errors.New("error: unknown parser state")
     }
 }
 

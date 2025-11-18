@@ -58,7 +58,7 @@ func (s *Server) listen() {
 func (s *Server) handle(conn net.Conn) {
     defer conn.Close()
 
-    responseWriter := response.Writer{ Writer: conn }
+    responseWriter := response.NewWriter(conn)
     req, err := request.RequestFromReader(conn)
 
     if err != nil {
@@ -71,5 +71,5 @@ func (s *Server) handle(conn net.Conn) {
         return
     }
 
-    s.handler(&responseWriter, req)
+    s.handler(responseWriter, req)
 }
